@@ -15,7 +15,7 @@ public class UserInterface {
         adventure = new Adventure();
         adventure.createMap();
         try {
-            File audioFile = new File ("/Users/augustreinholdsorensen/Documents/1. semester 2023/Programmer/Adventure/src/main/resources/Sounds Of Egyptian Pyramids.wav");
+            File audioFile = new File ("src/main/resources/Sounds Of Egyptian Pyramids.wav");
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
             clip = AudioSystem.getClip();
             clip.open(audioStream);
