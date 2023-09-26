@@ -2,13 +2,13 @@ import org.junit.jupiter.api.Test;
 
 public class MapTest {
 
-    @Test
-    public void Move_To_Room
-    Room room = new Room
+   // @Test
+    //public void Move_To_Room
+    //Room room = new Room
 
-    @Test
+    //@Test
             private Adventure adventure;
-    Adventure adventure = new Adventure();
-    adventure.cre
+    //Adventure adventure = new Adventure();
+    //adventure.cre
 
 }
