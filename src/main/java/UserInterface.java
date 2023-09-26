@@ -18,10 +18,21 @@ public class UserInterface {
     }
 
     public void welcome() {
-        System.out.println("Welcome to: THE BEST ADVENTURE GAME");
-        System.out.println("Can you find your way to the xxx");
+        System.out.println("Welcome to:");
+        System.out.println("            ▄▄                                                                          ▄▄         ▄▄  \n" +
+                "███▀▀██▀▀█████                                                                          ██       ▀███  \n" +
+                "█▀   ██   ▀███                                                                                     ██  \n" +
+                "     ██     ███████▄   ▄▄█▀██    ▀████████▄▀██▀   ▀██▀███▄███ ▄█▀██▄ ▀████████▄█████▄ ▀███    ▄█▀▀███  \n" +
+                "     ██     ██    ██  ▄█▀   ██     ██   ▀██  ██   ▄█   ██▀ ▀▀██   ██   ██    ██    ██   ██  ▄██    ██  \n" +
+                "     ██     ██    ██  ██▀▀▀▀▀▀     ██    ██   ██ ▄█    ██     ▄█████   ██    ██    ██   ██  ███    ██  \n" +
+                "     ██     ██    ██  ██▄    ▄     ██   ▄██    ███     ██    ██   ██   ██    ██    ██   ██  ▀██    ██  \n" +
+                "   ▄████▄  ████  ████▄ ▀█████▀     ██████▀     ▄█    ▄████▄  ▀████▀██▄████  ████  ████▄████▄ ▀████▀███▄\n" +
+                "                                   ██        ▄█                                                        \n" +
+                "                                 ▄████▄    ██▀                                                         \n");
+        System.out.println("Find your way to the pharaohs tomb, and recieve infinite wealth");
         System.out.println("Type 'help' for full list of commands");
-        System.out.println(adventure.getCurrent());
+
+        System.out.println("▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔\n" + adventure.getCurrent());
         System.out.println("");
     }
 
@@ -45,10 +56,13 @@ public class UserInterface {
                 adventure.goWest();
             }
             case "help", "h" -> {
-                System.out.println("Commands:\n\nTo move you can use these commands\ngo north, north, n \ngo south, south, s\ngo west, west, w\ngo east, east, e");
+                System.out.println("Commands:\nTo move you can use these commands\ngo north, north, n \ngo south, south, s\ngo west, west, w\ngo east, east, e\n'exit' to exit the program");
             }
             case "look" -> {
                 System.out.println(adventure.getCurrent());
+            }
+            case "exit" -> {
+                System.exit(0);
             }
             default -> System.out.println("Intet fundet");
         }
