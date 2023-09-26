@@ -3,8 +3,8 @@ public class Adventure {
     private Room current;
 
     public void createMap() {
-        Room room1 = new Room("entrance", "You find yourself at the entrance of a pyramid ...");
-        Room room2 = new Room("hallway", "You find yourself at a long hallway ...");
+        Room room1 = new Room("Entrance of the pyramid", "You find yourself at the entrance of a pyramid ...");
+        Room room2 = new Room("Hallway", "You find yourself at a long hallway ...");
         Room room3 = new Room("Traproom", "You find yourself in a room full of armed traps ...");
         Room room4 = new Room("Food room", "You are in a room full of vessels ...");
         Room room5 = new Room("Pharaohs room", "Ahead of you is the tomb of ...");
