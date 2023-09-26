@@ -1,12 +1,27 @@
 import java.util.Scanner;
+import javax.sound.sampled.*;
+import  java.io.File;
+import  java.io.IOException;
 
 public class UserInterface {
     Scanner scanner = new Scanner(System.in);
     private Adventure adventure;
+    private Clip clip;
+
+
+
 
     public UserInterface() {
         adventure = new Adventure();
         adventure.createMap();
+        try {
+            File audioFile = new File ("/Users/augustreinholdsorensen/Documents/1. semester 2023/Programmer/Adventure/src/main/resources/Sounds Of Egyptian Pyramids.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+            clip = AudioSystem.getClip();
+            clip.open(audioStream);
+        } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        }
     }
 
     public void start() {
@@ -18,6 +33,7 @@ public class UserInterface {
     }
 
     public void welcome() {
+        playMusic();
         System.out.println("Welcome to:");
         System.out.println("            ▄▄                                                                          ▄▄         ▄▄  \n" +
                 "███▀▀██▀▀█████                                                                          ██       ▀███  \n" +
@@ -35,7 +51,16 @@ public class UserInterface {
         System.out.println("▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔\n" + adventure.getCurrent());
         System.out.println("");
     }
-
+    public void playMusic() {
+        if (clip != null && !clip.isRunning()) {
+            clip.loop(Clip.LOOP_CONTINUOUSLY); // Loop the music continuously
+        }
+    }
+    public void stopMusic() {
+        if (clip != null && clip.isRunning()) {
+            clip.stop();
+        }
+    }
     public void userinput() {
         String input = scanner.nextLine().toLowerCase();
 
@@ -56,13 +81,19 @@ public class UserInterface {
                 adventure.goWest();
             }
             case "help", "h" -> {
-                System.out.println("Commands:\nTo move you can use these commands\ngo north, north, n \ngo south, south, s\ngo west, west, w\ngo east, east, e\n'exit' to exit the program");
+                System.out.println("Commands:\nTo move you can use these commands\ngo north, north, n \ngo south, south, s\ngo west, west, w\ngo east, east, e\n'exit' to exit the program\n'mute' to turn off  game music\n'resume' to start music");
             }
             case "look" -> {
                 System.out.println(adventure.getCurrent());
             }
             case "exit" -> {
                 System.exit(0);
+            }
+            case "mute" -> {
+                stopMusic();
+            }
+            case "resume" -> {
+                playMusic();
             }
             default -> System.out.println("Intet fundet");
         }
