@@ -1,6 +1,5 @@
 target/
 .idea/
-Sounds Of Egyptian Pyramids.wav
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
