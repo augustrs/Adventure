@@ -6,7 +6,6 @@ import java.io.IOException;
 public class UserInterface {
     Scanner scanner = new Scanner(System.in);
     private Adventure adventure;
-    private Map map;
     Music music = new Music();
 
 
@@ -42,7 +41,7 @@ public class UserInterface {
         System.out.println("Find your way to the pharaohs tomb, and recieve infinite wealth");
         System.out.println("Type 'help' for full list of commands");
 
-        System.out.println("▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔\n" + adventure.getCurrent());
+        System.out.println("▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔\n" + adventure.getCurrentRoom());
         System.out.println("");
     }
 
@@ -79,7 +78,7 @@ public class UserInterface {
                         "\n'resume' to start music");
             }
             case "look" -> {
-                System.out.println(adventure.getCurrent());
+                System.out.println(adventure.getCurrentRoom());
             }
             case "exit" -> {
                 System.exit(0);
