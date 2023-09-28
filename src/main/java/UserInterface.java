@@ -6,20 +6,15 @@ import java.io.IOException;
 public class UserInterface {
     Scanner scanner = new Scanner(System.in);
     private Adventure adventure;
-    private Clip clip;
+    private Map map;
+    Music music = new Music();
 
 
     public UserInterface() {
         adventure = new Adventure();
         adventure.createMap();
-        try {
-            File audioFile = new File("src/main/resources/Swords and Sandals 2 - Title Theme.wav");
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
-            clip = AudioSystem.getClip();
-            clip.open(audioStream);
-        } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
-            e.printStackTrace();
-        }
+        music.play();
+
     }
 
     public void start() {
@@ -32,7 +27,7 @@ public class UserInterface {
     }
 
     public void welcome() {
-        playMusic();
+
         System.out.println("Welcome to:");
         System.out.println("            ▄▄                                                                          ▄▄         ▄▄  \n" +
                 "███▀▀██▀▀█████                                                                          ██       ▀███  \n" +
@@ -51,17 +46,7 @@ public class UserInterface {
         System.out.println("");
     }
 
-    public void playMusic() {
-        if (clip != null && !clip.isRunning()) {
-            clip.loop(Clip.LOOP_CONTINUOUSLY); // Loop the music continuously
-        }
-    }
 
-    public void stopMusic() {
-        if (clip != null && clip.isRunning()) {
-            clip.stop();
-        }
-    }
 
     public void userinput() {
         String input = scanner.nextLine().trim().toLowerCase();
@@ -100,10 +85,10 @@ public class UserInterface {
                 System.exit(0);
             }
             case "mute" -> {
-                stopMusic();
+                music.stopMusic();
             }
             case "resume" -> {
-                playMusic();
+                music.playMusic();
             }
             default -> System.out.println("Intet fundet");
         }
