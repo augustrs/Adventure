@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import javax.sound.sampled.*;
-import  java.io.File;
-import  java.io.IOException;
+import java.io.File;
+import java.io.IOException;
 
 public class UserInterface {
     Scanner scanner = new Scanner(System.in);
@@ -9,13 +9,11 @@ public class UserInterface {
     private Clip clip;
 
 
-
-
     public UserInterface() {
         adventure = new Adventure();
         adventure.createMap();
         try {
-            File audioFile = new File ("src/main/resources/Swords and Sandals 2 - Title Theme.wav");
+            File audioFile = new File("src/main/resources/Swords and Sandals 2 - Title Theme.wav");
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
             clip = AudioSystem.getClip();
             clip.open(audioStream);
@@ -27,9 +25,10 @@ public class UserInterface {
     public void start() {
         welcome();
         userinput();
-        do {userinput();
+        do {
+            userinput();
 
-        }while (true);
+        } while (true);
     }
 
     public void welcome() {
@@ -51,18 +50,21 @@ public class UserInterface {
         System.out.println("▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔\n" + adventure.getCurrent());
         System.out.println("");
     }
+
     public void playMusic() {
         if (clip != null && !clip.isRunning()) {
             clip.loop(Clip.LOOP_CONTINUOUSLY); // Loop the music continuously
         }
     }
+
     public void stopMusic() {
         if (clip != null && clip.isRunning()) {
             clip.stop();
         }
     }
+
     public void userinput() {
-        String input = scanner.nextLine().toLowerCase();
+        String input = scanner.nextLine().trim().toLowerCase();
 
         switch (input) {
             case "go north", "north", "n" -> {
@@ -81,7 +83,15 @@ public class UserInterface {
                 adventure.goWest();
             }
             case "help", "h" -> {
-                System.out.println("Commands:\nTo move you can use these commands\ngo north, north, n \ngo south, south, s\ngo west, west, w\ngo east, east, e\n'exit' to exit the program\n'mute' to turn off  game music\n'resume' to start music");
+                System.out.println("Commands:" +
+                        "\nTo move you can use these commands" +
+                        "\ngo north, north, n " +
+                        "\ngo south, south, s" +
+                        "\ngo west, west, w" +
+                        "\ngo east, east, e" +
+                        "\n'exit' to exit the program" +
+                        "\n'mute' to turn off  game music" +
+                        "\n'resume' to start music");
             }
             case "look" -> {
                 System.out.println(adventure.getCurrent());
