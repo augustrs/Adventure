@@ -7,6 +7,7 @@ public class UserInterface {
     Scanner scanner = new Scanner(System.in);
     private Adventure adventure;
     Music music = new Music();
+    private Item item;
 
 
     public UserInterface() {
@@ -41,56 +42,74 @@ public class UserInterface {
         System.out.println("Find your way to the pharaohs tomb, and recieve infinite wealth");
         System.out.println("Type 'help' for full list of commands");
 
-        System.out.println("▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔\n" + adventure.getCurrentRoom());
+        System.out.println("▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔\n" + adventure.getCurrentRoom() + adventure.getCurrentRoom().getDescription());
         System.out.println("");
     }
 
 
-
     public void userinput() {
         String input = scanner.nextLine().trim().toLowerCase();
+        String[] commands = input.split("\\s+");
+        String command = commands[0];
 
-        switch (input) {
-            case "go north", "north", "n" -> {
-                adventure.goNorth();
-            }
+        if (commands.length == 1) {
 
-
-            case "go south", "south", "s" -> {
-                adventure.goSouth();
+            switch (command) {
+                case "help", "h" -> {
+                    System.out.println("Commands:" +
+                            "\nTo move you can use these commands" +
+                            "\ngo north, north, n " +
+                            "\ngo south, south, s" +
+                            "\ngo west, west, w" +
+                            "\ngo east, east, e" +
+                            "\n'exit' to exit the program" +
+                            "\n'mute' to turn off  game music" +
+                            "\n'resume' to start music");
+                }
+                case "look" -> {
+                    System.out.println(adventure.getCurrentRoom());
+                }
+                case "exit" -> {
+                    System.exit(0);
+                }
+                case "mute" -> {
+                    music.stopMusic();
+                }
+                case "resume" -> {
+                    music.playMusic();
+                }
+                case "inventory" -> {
+                    System.out.println(adventure.getPlayer().getInventory());
+                }
+                default -> System.out.println("Invalid input, type 'help' for list of commands");
             }
-
-            case "go east", "east", "e" -> {
-                adventure.goEast();
-            }
-            case "go west", "west", "w" -> {
-                adventure.goWest();
-            }
-            case "help", "h" -> {
-                System.out.println("Commands:" +
-                        "\nTo move you can use these commands" +
-                        "\ngo north, north, n " +
-                        "\ngo south, south, s" +
-                        "\ngo west, west, w" +
-                        "\ngo east, east, e" +
-                        "\n'exit' to exit the program" +
-                        "\n'mute' to turn off  game music" +
-                        "\n'resume' to start music");
-            }
-            case "look" -> {
-                System.out.println(adventure.getCurrentRoom());
-            }
-            case "exit" -> {
-                System.exit(0);
-            }
-            case "mute" -> {
-                music.stopMusic();
-            }
-            case "resume" -> {
-                music.playMusic();
-            }
-            default -> System.out.println("Intet fundet");
         }
+        if (commands.length == 2)
+            switch (commands[0]) {
+
+                case "go" -> {
+                    switch (commands[1]) {
+                        case "north", "n" -> {
+                            adventure.goNorth();
+                        }
+                        case "south", "s" -> {
+                            adventure.goSouth();
+                        }
+                        case "east", "e" -> {
+                            adventure.goEast();
+                        }
+                        case "west", "w" -> {
+                            adventure.goWest();
+                        }
+                    }
+                }
+
+                case "take" -> {
+                    Item pickItem = adventure.takeItem(commands[1]);
+
+                }
+                default -> System.out.println("Invalid input, type 'help' for list of commands");
+            }
 
     }
 }

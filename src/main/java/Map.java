@@ -16,6 +16,8 @@ public class Map {
         room1.setEast(room2);
         room1.setWest(null);
         room1.setSouth(room4);
+        room1.addItem(new Item("lamp", "A shiny brass lamp"));
+        room1.addItem(new Item("watch", "A shiny golden watch"));
 
         // room 2
         room2.setNorth(null);
@@ -63,4 +65,6 @@ public class Map {
     public Room getStarterRoom() {
         return starterRoom;
     }
+
+
 }

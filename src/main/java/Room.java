@@ -5,6 +5,7 @@ public class Room {
     private Room south;
     private Room east;
     private Room west;
+    private ArrayList<Item> itemList = new ArrayList<>();
 
     public Room(String name, String description) {
         this.name = name;
@@ -42,6 +43,12 @@ public class Room {
     public Room getNorth() {
         return north;
     }
+
+    public String getDescription() {
+
+        return "In the room you see: " + itemList.toString();
+    }
+
 
     @Override
     public String toString() {

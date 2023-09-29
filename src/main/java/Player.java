@@ -1,11 +1,14 @@
+import java.util.ArrayList;
+
 public class Player {
     private Room currentRoom;
+    private ArrayList<Item> inventory = new ArrayList<>();
     public void goNorth() {
         if (currentRoom.getNorth() == null) {
             System.out.println("You cant go this way");
         } else {
             currentRoom = currentRoom.getNorth();
-            System.out.println(getCurrentRoom());
+            System.out.println(getCurrentRoom()+getCurrentRoom().getDescription());
         }
     }
     public void goSouth() {
@@ -13,7 +16,7 @@ public class Player {
             System.out.println("You cant go this way");
         } else {
             currentRoom = currentRoom.getSouth();
-            System.out.println(getCurrentRoom());
+            System.out.println(getCurrentRoom()+getCurrentRoom().getDescription());
         }
     }
     public void goEast() {
@@ -21,7 +24,7 @@ public class Player {
             System.out.println("You cant go this way");
         } else {
             currentRoom = currentRoom.getEast();
-            System.out.println(getCurrentRoom());
+            System.out.println(getCurrentRoom()+getCurrentRoom().getDescription());
         }
     }
 
@@ -31,9 +34,11 @@ public class Player {
             System.out.println("You cant go this way");
         } else {
             currentRoom = currentRoom.getWest();
-            System.out.println(getCurrentRoom());
+            System.out.println(getCurrentRoom()+getCurrentRoom().getDescription());
         }
     }
+
+
 
     public Room getCurrentRoom() {
         return currentRoom;
@@ -41,5 +46,17 @@ public class Player {
 
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
+    }
+    public void addItem(Item item) {
+        inventory.add(item);
+    }
+    public Item takeItem(String kortNavn) {
+        Item pickedItem = getCurrentRoom().removeItem(kortNavn);
+        addItem(pickedItem);
+    return pickedItem;
+    }
+
+    public ArrayList<Item> getInventory() {
+        return inventory;
     }
 }
