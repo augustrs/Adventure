@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Room {
     private String name;
     private String description;
@@ -54,4 +56,24 @@ public class Room {
     public String toString() {
         return "\n" + name + " - " + description;
     }
+
+    public void addItem(Item item) {
+        itemList.add(item);
+    }
+
+    public Item findItem(String kortNavn) {
+        for (Item item : itemList) {
+            if (item.getKortNavn().equals(kortNavn)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public Item removeItem(String kortNavn) {
+        Item item = findItem(kortNavn);
+        itemList.remove(item);
+        return item;
+    }
 }
+
