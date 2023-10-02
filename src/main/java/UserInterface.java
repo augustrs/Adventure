@@ -108,6 +108,9 @@ public class UserInterface {
                     Item pickItem = adventure.takeItem(commands[1]);
 
                 }
+                case "drop" -> {
+                    Item pickItem = adventure.dropItem(commands[1]);
+                }
                 default -> System.out.println("Invalid input, type 'help' for list of commands");
             }
 

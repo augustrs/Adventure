@@ -50,13 +50,32 @@ public class Player {
     public void addItem(Item item) {
         inventory.add(item);
     }
+    public void removeItem(Item item) {
+        inventory.remove(item);
+    }
     public Item takeItem(String kortNavn) {
         Item pickedItem = getCurrentRoom().removeItem(kortNavn);
         addItem(pickedItem);
     return pickedItem;
     }
+    public Item dropItem(String kortNavn) {
+        Item pickedItem = findItemInInventory(kortNavn);
+        if (pickedItem!=null) {
+            removeItem(pickedItem);
+            getCurrentRoom().addItem(pickedItem);
+        }
+        return pickedItem;
+    }
 
     public ArrayList<Item> getInventory() {
         return inventory;
+    }
+    private Item findItemInInventory(String kortNavn) {
+        for (Item item : inventory) {
+            if (item.getKortNavn().equalsIgnoreCase(kortNavn)) {
+                return item;
+            }
+        }
+        return null;
     }
 }
