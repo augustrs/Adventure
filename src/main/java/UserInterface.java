@@ -57,14 +57,14 @@ public class UserInterface {
             switch (command) {
                 case "help", "h" -> {
                     System.out.println("Commands:" +
-                            "\nTo move you can use these commands" +
-                            "\ngo north, north, n " +
-                            "\ngo south, south, s" +
-                            "\ngo west, west, w" +
-                            "\ngo east, east, e" +
-                            "\n'exit' to exit the program" +
-                            "\n'mute' to turn off  game music" +
-                            "\n'resume' to start music");
+                            "\nGO           go north, go south, go east, go west - you can also use N, S, E and W" +
+                            "\nEXIT         to exit the program" +
+                            "\nMUTE         to turn off  game music" +
+                            "\nRESUME       to start music" +
+                            "\nLOOK         to take another look around the room" +
+                            "\nTAKE         to pickup an object from a room" +
+                            "\nDROP         to drop an item inside a room" +
+                            "\nINVENTORY    to look in your inventory");
                 }
                 case "look" -> {
                     System.out.println(adventure.getCurrentRoom()+adventure.getCurrentRoom().getDescription());
@@ -101,6 +101,7 @@ public class UserInterface {
                         case "west", "w" -> {
                             adventure.goWest();
                         }
+                        default -> System.out.println("Invalid input");
                     }
                 }
 
