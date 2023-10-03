@@ -67,7 +67,7 @@ public class UserInterface {
                             "\nINVENTORY    to look in your inventory");
                 }
                 case "look" -> {
-                    System.out.println(adventure.getCurrentRoom()+adventure.getCurrentRoom().getDescription());
+                    System.out.println(adventure.getCurrentRoom() + adventure.getCurrentRoom().getDescription());
                 }
                 case "exit" -> {
                     System.exit(0);
@@ -107,11 +107,11 @@ public class UserInterface {
 
                 case "take" -> {
                     Item pickItem = adventure.takeItem(commands[1]);
-                    System.out.println("Picked up '" +pickItem+"'");
+                    System.out.println("Picked up '" + pickItem + "'");
                 }
                 case "drop" -> {
                     Item pickItem = adventure.dropItem(commands[1]);
-                    System.out.println("Dropped '" + pickItem+"'");
+                    System.out.println("Dropped '" + pickItem + "'");
                 }
                 default -> System.out.println("Invalid input, type 'help' for list of commands");
             }

@@ -27,6 +27,7 @@ public class Music {
             clip.stop();
         }
     }
+
     public void playMusic() {
         if (clip != null && !clip.isRunning()) {
             clip.loop(Clip.LOOP_CONTINUOUSLY); // Loop the music continuously

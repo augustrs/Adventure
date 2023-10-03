@@ -1,6 +1,7 @@
 public class Item {
     private String kortNavn;
     private String langNavn;
+
     public Item(String kortNavn, String langNavn) {
         this.kortNavn = kortNavn;
         this.langNavn = langNavn;

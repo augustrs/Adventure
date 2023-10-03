@@ -75,6 +75,7 @@ public class Room {
         itemList.remove(item);
         return item;
     }
+
     public Item placeItem(String kortNavn) {
         Item item = findItem(kortNavn);
         itemList.add(item);

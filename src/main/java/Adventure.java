@@ -37,6 +37,7 @@ public class Adventure {
     public Item takeItem(String kortNavn) {
         return player.takeItem(kortNavn);
     }
+
     public Item dropItem(String kortNavn) {
         return player.dropItem(kortNavn);
     }

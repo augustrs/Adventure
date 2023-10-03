@@ -1,5 +1,6 @@
 public class Map {
     private Room starterRoom;
+
     public void createMap() {
         Room room1 = new Room("Entrance of the pyramid", "You find yourself at the entrance of a pyramid ...");
         Room room2 = new Room("Hallway", "You find yourself at a long hallway ...");
@@ -18,6 +19,7 @@ public class Map {
         room1.setSouth(room4);
         room1.addItem(new Item("lamp", "A shiny brass lamp"));
         room1.addItem(new Item("watch", "A shiny golden watch"));
+        room1.addItem(new Food("æble", "Et grønt æble", 5));
 
         // room 2
         room2.setNorth(null);
