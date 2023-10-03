@@ -3,6 +3,11 @@ import java.util.ArrayList;
 public class Player {
     private Room currentRoom;
     private ArrayList<Item> inventory = new ArrayList<>();
+    private int health;
+
+    public Player(int health) {
+        this.health = health;
+    }
 
     public void goNorth() {
         if (currentRoom.getNorth() == null) {
@@ -84,5 +89,22 @@ public class Player {
             }
         }
         return null;
+    }
+
+    public Returnmessage eatItem(String kortNavn) {
+        Item item = findItemInInventory(kortNavn);
+        if (item == null) {
+            return Returnmessage.NOT_FOUND;
+        } else if (item instanceof Food food) {
+            removeItem(item);
+            health+=food.getHealingPoint();
+            return Returnmessage.OK;
+        } else {
+            return Returnmessage.NOT_OK;
+        }
+    }
+
+    public int getHealth() {
+        return health;
     }
 }

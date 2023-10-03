@@ -5,7 +5,7 @@ public class Adventure {
 
     public Adventure() {
         map.createMap();
-        player = new Player();
+        player = new Player(50);
         player.setCurrentRoom(map.getStarterRoom());
     }
 
@@ -45,6 +45,14 @@ public class Adventure {
     public Player getPlayer() {
         return player;
     }
+
+
+    public Returnmessage eatItem(String kortNavn) {
+        return player.eatItem(kortNavn);
+    }
+
+
+
 }
 
 

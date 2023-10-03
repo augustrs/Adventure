@@ -106,12 +106,35 @@ public class UserInterface {
                 }
 
                 case "take" -> {
+
                     Item pickItem = adventure.takeItem(commands[1]);
-                    System.out.println("Picked up '" + pickItem + "'");
+                    if (pickItem != null) {
+                        System.out.println("Picked up '" + pickItem + "'");
+                    } else System.out.println("There is no " + commands[1] + " in this room");
                 }
                 case "drop" -> {
                     Item pickItem = adventure.dropItem(commands[1]);
-                    System.out.println("Dropped '" + pickItem + "'");
+                    if (pickItem != null) {
+                        System.out.println("Dropped '" + pickItem + "'");
+                    } else System.out.println("There is no " + commands[1] + " in your inventory");
+                }
+                case "eat" -> {
+                    Returnmessage result = adventure.eatItem(commands[1]);
+                    switch (result) {
+                        case OK -> {
+
+                            System.out.println("Eating " + commands[1]+"!");
+                            System.out.println("You now have "+adventure.getPlayer().getHealth()+" hp");
+                        }
+                        case NOT_OK -> {
+                            System.out.println("You can't eat " + commands[1]);
+
+                        }
+                        case NOT_FOUND -> {
+                            System.out.println("No " + commands[1] + " was found in your inventory");
+                        }
+                    }
+
                 }
                 default -> System.out.println("Invalid input, type 'help' for list of commands");
             }
