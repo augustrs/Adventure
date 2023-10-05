@@ -19,7 +19,9 @@ public class Map {
         room1.setSouth(room4);
         room1.addItem(new Item("lamp", "A shiny brass lamp"));
         room1.addItem(new Item("watch", "A shiny golden watch"));
-        room1.addItem(new Food("æble", "Et grønt æble", 5));
+        room1.addItem(new Food("apple", "A red apple", 10));
+        room1.addItem(new RangedWeapon("bow", "An ancient bow",20, 30));
+
 
         // room 2
         room2.setNorth(null);
@@ -61,7 +63,7 @@ public class Map {
         room9.setEast(null);
         room9.setWest(room8);
         room9.setSouth(null);
-        starterRoom = room1;
+        this.starterRoom = room1;
     }
 
     public Room getStarterRoom() {

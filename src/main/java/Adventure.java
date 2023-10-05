@@ -5,12 +5,12 @@ public class Adventure {
 
     public Adventure() {
         map.createMap();
-        player = new Player(50);
-        player.setCurrentRoom(map.getStarterRoom());
+        player = new Player(map.getStarterRoom());
+
     }
 
     public Room getCurrentRoom() {
-        return player.getCurrentRoom();
+        return map.getStarterRoom();
     }
 
     public void createMap() {
@@ -52,7 +52,13 @@ public class Adventure {
     }
 
 
+    public Returnmessage equipItem(String kortNavn) {
+        return player.equipItem(kortNavn);
+    }
 
+    public AttackEnum attack() {
+        return player.attack();
+    }
 }
 
 

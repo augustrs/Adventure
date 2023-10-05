@@ -2,11 +2,14 @@ import java.util.ArrayList;
 
 public class Player {
     private Room currentRoom;
-    private ArrayList<Item> inventory = new ArrayList<>();
+    private ArrayList<Item> inventory;
     private int health;
+    private Weapon currentWeapon;
 
-    public Player(int health) {
-        this.health = health;
+    public Player(Room currentRoom) {
+        this.health = 50;
+        this.inventory = new ArrayList<>();
+        this.currentRoom = currentRoom;
     }
 
     public void goNorth() {
@@ -106,5 +109,28 @@ public class Player {
 
     public int getHealth() {
         return health;
+    }
+    public Returnmessage equipItem(String kortNavn){
+        Item equippedWeapon = findItemInInventory(kortNavn);
+        if (equippedWeapon == null){
+            return Returnmessage.NOT_FOUND;
+        }else if(equippedWeapon instanceof Weapon){
+            currentWeapon = (Weapon)equippedWeapon;
+            getCurrentRoom().removeItem(kortNavn);
+            inventory.remove(equippedWeapon);
+            return Returnmessage.OK;
+        }else {
+            return Returnmessage.NOT_OK;
+        }
+    }
+    public AttackEnum attack(){
+        if(currentWeapon instanceof RangedWeapon){
+            if(currentWeapon.getAmmo() < 1){
+                return  AttackEnum.NO_AMMO;
+            } else {
+                return AttackEnum.FIRED;
+            }
+        }
+        return AttackEnum.NOT_A_WEAPON;
     }
 }
