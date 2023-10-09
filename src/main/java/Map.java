@@ -20,7 +20,8 @@ public class Map {
         room1.addItem(new Item("lamp", "A shiny brass lamp"));
         room1.addItem(new Item("watch", "A shiny golden watch"));
         room1.addItem(new Food("apple", "A red apple", 10));
-        room1.addItem(new RangedWeapon("bow", "An ancient bow",20, 2));
+        room1.addItem(new RangedWeapon("bow", "An ancient bow",20, 1));
+        room1.addEnemy(new Enemy("Ogre","A nasty smelling ogre",10,new MeleeWeapon("book", "A very boring, but heavy book",5)));
 
 
         // room 2
@@ -28,6 +29,7 @@ public class Map {
         room2.setEast(room3);
         room2.setWest(room1);
         room2.setSouth(null);
+        room2.addItem(new Item ("torch", "A torch"));
         // room 3
         room3.setNorth(null);
         room3.setEast(null);
