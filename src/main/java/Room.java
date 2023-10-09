@@ -8,6 +8,7 @@ public class Room {
     private Room east;
     private Room west;
     private ArrayList<Item> itemList = new ArrayList<>();
+    private ArrayList<Enemy> enemyList = new ArrayList<>();
 
     public Room(String name, String description) {
         this.name = name;
@@ -52,6 +53,7 @@ public class Room {
     }
 
 
+
     @Override
     public String toString() {
         return "\n" + name + " - " + description;
@@ -69,7 +71,13 @@ public class Room {
         }
         return null;
     }
+    public Enemy printEnemies(){
+        for (Enemy enemy : enemyList) {
+            System.out.println(enemy.getName()+enemy.getDescription()+enemy.getHp());
+        }
 
+        return enemy;
+    }
     public Item removeItem(String kortNavn) {
         Item item = findItem(kortNavn);
         itemList.remove(item);
@@ -82,5 +90,12 @@ public class Room {
         return item;
     }
 
+    public void createEnemy(String name, String description, int hp, Weapon weapon) {
+        Enemy enemy = new Enemy(name, description, hp, weapon);
+        addEnemy(enemy);
+    }
+    public void addEnemy (Enemy enemy) {
+        enemyList.add(enemy);
+    }
 }
 
