@@ -20,7 +20,7 @@ public class Map {
         room1.addItem(new Item("lamp", "A shiny brass lamp"));
         room1.addItem(new Item("watch", "A shiny golden watch"));
         room1.addItem(new Food("apple", "A red apple", 10));
-        room1.addItem(new RangedWeapon("bow", "An ancient bow",20, 2));
+        room1.addItem(new RangedWeapon("bow", "An ancient bow",20, 1));
 
 
         // room 2

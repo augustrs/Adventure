@@ -125,9 +125,13 @@ public class Player {
     }
     public AttackEnum attack(){
         if(currentWeapon instanceof RangedWeapon){
-            if(currentWeapon.getAmmo() < 1){
+            RangedWeapon rangedWeapon = (RangedWeapon) currentWeapon;
+            int currentAmmo = currentWeapon.getAmmo();
+            if(currentAmmo < 1){
+
                 return  AttackEnum.NO_AMMO;
             } else {
+                ((RangedWeapon) currentWeapon).setAmmo(currentAmmo-1);
                 return AttackEnum.FIRED;
             }
         }
