@@ -15,7 +15,7 @@ public class RangedWeapon extends Weapon {
     @Override
     public AttackEnum attack() {
         if(ammo>0){
-            ammo-= 1;
+            ammo-=1;
             return AttackEnum.FIRED;
         }else{
             return AttackEnum.NO_AMMO;
@@ -25,4 +25,6 @@ public class RangedWeapon extends Weapon {
     public int getAmmo() {
         return ammo;
     }
+
 }
+

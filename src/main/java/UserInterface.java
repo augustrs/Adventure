@@ -81,6 +81,26 @@ public class UserInterface {
                 case "inventory" -> {
                     System.out.println(adventure.getPlayer().getInventory());
                 }
+                case "attack" -> {
+                    AttackEnum result = adventure.attack();
+                    switch (result) {
+                        case ATTACK -> {
+                            adventure.attack();
+                            System.out.println("You've attacked an enemy");
+                            //Enemy hp her
+                        }
+                        case FIRED -> {
+                            adventure.attack();
+                            System.out.println("You've fired your weapon");
+                        }
+                        case NO_AMMO -> {
+                            System.out.println("NO AMMO! cant attack!");
+                        }
+                        case NOT_A_WEAPON -> {
+                            System.out.println("You dont have a weapon equipped to attack with");
+                        }
+                    }
+                }
                 default -> System.out.println("Invalid input, type 'help' for list of commands");
             }
         }
@@ -123,8 +143,8 @@ public class UserInterface {
                     switch (result) {
                         case OK -> {
 
-                            System.out.println("Eating " + commands[1]+"!");
-                            System.out.println("You now have "+adventure.getPlayer().getHealth()+" hp");
+                            System.out.println("Eating " + commands[1] + "!");
+                            System.out.println("You now have " + adventure.getPlayer().getHealth() + " hp");
                         }
                         case NOT_OK -> {
                             System.out.println("You can't eat " + commands[1]);
@@ -134,7 +154,21 @@ public class UserInterface {
                             System.out.println("No " + commands[1] + " was found in your inventory");
                         }
                     }
+                }
+                case "equip" -> {
+                    Returnmessage result = adventure.equipItem(commands[1]);
+                    switch (result) {
+                        case OK -> {
+                            System.out.println("Equipping " + commands[1]+"!");
 
+                        }
+                        case NOT_OK -> {
+                            System.out.println("You can't equip " + commands[1]);
+                        }
+                        case NOT_FOUND -> {
+                            System.out.println("No " + commands[1]+ " was found in your inventory");
+                        }
+                }
                 }
                 default -> System.out.println("Invalid input, type 'help' for list of commands");
             }
