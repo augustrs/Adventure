@@ -10,7 +10,7 @@ public class Adventure {
     }
 
     public Room getCurrentRoom() {
-        return map.getStarterRoom();
+        return player.getCurrentRoom();
     }
 
     public void createMap() {

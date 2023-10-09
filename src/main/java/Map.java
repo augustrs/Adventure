@@ -28,6 +28,7 @@ public class Map {
         room2.setEast(room3);
         room2.setWest(room1);
         room2.setSouth(null);
+        room2.addItem(new Item ("torch", "A torch"));
         // room 3
         room3.setNorth(null);
         room3.setEast(null);
