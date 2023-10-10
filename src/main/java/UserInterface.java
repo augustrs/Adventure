@@ -1,7 +1,4 @@
 import java.util.Scanner;
-import javax.sound.sampled.*;
-import java.io.File;
-import java.io.IOException;
 
 public class UserInterface {
     Scanner scanner = new Scanner(System.in);
@@ -42,7 +39,7 @@ public class UserInterface {
         System.out.println("Find your way to the pharaohs tomb, and recieve infinite wealth");
         System.out.println("Type 'help' for full list of commands");
 
-        System.out.println("▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔\n" + adventure.getCurrentRoom() + adventure.getCurrentRoom().getDescription());
+        System.out.println("▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔\n" + adventure.getCurrentRoom() + adventure.getCurrentRoom().getRoomContent());
         System.out.println("");
     }
 
@@ -67,7 +64,7 @@ public class UserInterface {
                             "\nINVENTORY    to look in your inventory");
                 }
                 case "look" -> {
-                    System.out.println(adventure.getCurrentRoom() + adventure.getCurrentRoom().getDescription());
+                    System.out.println(adventure.getCurrentRoom() + adventure.getCurrentRoom().getRoomContent());
                 }
                 case "exit" -> {
                     System.exit(0);

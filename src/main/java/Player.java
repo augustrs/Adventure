@@ -17,7 +17,7 @@ public class Player {
             System.out.println("You cant go this way");
         } else {
             currentRoom = currentRoom.getNorth();
-            System.out.println(getCurrentRoom() + getCurrentRoom().getDescription());
+            System.out.println(getCurrentRoom() + getCurrentRoom().getRoomContent());
         }
     }
 
@@ -26,7 +26,7 @@ public class Player {
             System.out.println("You cant go this way");
         } else {
             currentRoom = currentRoom.getSouth();
-            System.out.println(getCurrentRoom() + getCurrentRoom().getDescription());
+            System.out.println(getCurrentRoom() + getCurrentRoom().getRoomContent());
         }
     }
 
@@ -35,7 +35,7 @@ public class Player {
             System.out.println("You cant go this way");
         } else {
             currentRoom = currentRoom.getEast();
-            System.out.println(getCurrentRoom() + getCurrentRoom().getDescription());
+            System.out.println(getCurrentRoom() + getCurrentRoom().getRoomContent());
         }
     }
 
@@ -45,7 +45,7 @@ public class Player {
             System.out.println("You cant go this way");
         } else {
             currentRoom = currentRoom.getWest();
-            System.out.println(getCurrentRoom() + getCurrentRoom().getDescription());
+            System.out.println(getCurrentRoom() + getCurrentRoom().getRoomContent());
         }
     }
 
@@ -134,6 +134,10 @@ public class Player {
                 ((RangedWeapon) currentWeapon).setAmmo(currentAmmo-1);
                 return AttackEnum.FIRED;
             }
+        }
+        if (currentWeapon instanceof MeleeWeapon) {
+            MeleeWeapon meleeWeapon = (MeleeWeapon) currentWeapon;
+            return AttackEnum.ATTACK;
         }
         return AttackEnum.NOT_A_WEAPON;
     }

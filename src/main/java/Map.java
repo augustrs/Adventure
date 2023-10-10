@@ -21,7 +21,8 @@ public class Map {
         room1.addItem(new Item("watch", "A shiny golden watch"));
         room1.addItem(new Food("apple", "A red apple", 10));
         room1.addItem(new RangedWeapon("bow", "An ancient bow",20, 1));
-        room1.addEnemy(new Enemy("Ogre","A nasty smelling ogre",10,new MeleeWeapon("book", "A very boring, but heavy book",5)));
+        room1.addEnemy(new Enemy("ogre","A nasty smelling ogre",10,new MeleeWeapon("book", "A very boring, but heavy book",5)));
+        room1.addItem(new MeleeWeapon("club", "A heavy club",10));
 
 
         // room 2
