@@ -84,12 +84,20 @@ public class Room {
         return item;
     }
 
-    public void createEnemy(String name, String description, int hp, Weapon weapon) {
-        Enemy enemy = new Enemy(name, description, hp, weapon);
+    public void createEnemy(String name, String description, int hp, Weapon weapon, Room room) {
+        Enemy enemy = new Enemy(name, description, hp, weapon,room);
         addEnemy(enemy);
     }
     public void addEnemy (Enemy enemy) {
         enemyList.add(enemy);
+    }
+
+    public ArrayList<Enemy> getEnemyList() {
+        return enemyList;
+    }
+
+    public ArrayList<Item> getItemList() {
+        return itemList;
     }
 }
 

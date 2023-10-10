@@ -59,6 +59,7 @@ public class Adventure {
     public AttackEnum attack() {
         return player.attack();
     }
+
 }
 
 

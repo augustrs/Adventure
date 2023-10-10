@@ -82,23 +82,23 @@ public class UserInterface {
                     AttackEnum result = adventure.attack();
                     switch (result) {
                         case ATTACK -> {
-                            adventure.attack();
-                            System.out.println("You've attacked an enemy");
-                            //Enemy hp her
+
+                            System.out.println("\nAttack sequence successful");
+
                         }
                         case FIRED -> {
-                            adventure.attack();
-                            System.out.println("You've fired your weapon");
+
+                            System.out.println("\nFiring sequence successful");
                         }
                         case NO_AMMO -> {
-                            System.out.println("NO AMMO! cant attack!");
+                            System.out.println("\nNO AMMO! cant attack!");
                         }
                         case NOT_A_WEAPON -> {
-                            System.out.println("You dont have a weapon equipped to attack with");
+                            System.out.println("\nYou dont have a weapon equipped to attack with");
                         }
                     }
                 }
-                default -> System.out.println("Invalid input, type 'help' for list of commands");
+                default -> System.out.println("\nInvalid input, type 'help' for list of commands");
             }
         }
         if (commands.length == 2)

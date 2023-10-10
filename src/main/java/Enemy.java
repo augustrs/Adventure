@@ -5,11 +5,12 @@ public class Enemy {
     private Weapon weapon;
     private Room room;
 
-    public Enemy(String name, String description, int hp, Weapon weapon){
+    public Enemy(String name, String description, int hp, Weapon weapon, Room room){
         this.name = name;
         this.description = description;
         this.hp = hp;
         this.weapon = weapon;
+        this.room = room;
 
     }
 
@@ -29,10 +30,10 @@ public class Enemy {
         return weapon;
     }
 
-    public Room getRoom() {
+    public Room currentRoom() {
         return room;
     }
-    public void hit(int newHp){
+    public void setHp(int newHp){
         this.hp=newHp;
     }
 
@@ -42,8 +43,18 @@ public class Enemy {
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", hp=" + hp +
-                ", weapon=" + weapon +
-                ", room=" + room +
-                '}';
+                ", weapon=" + weapon
+                ;
+    }
+    public void isEnemyDead() {
+        if (hp>0) {
+            System.out.println(description + " has '" +hp +"' HP remaining");
+        }else {
+            System.out.println(description + " has died and dropped their weapon: '" + weapon + "' in the room");
+
+            currentRoom().getItemList().add(weapon);
+            weapon = null;
+            currentRoom().getEnemyList().remove(0);
+        }
     }
 }

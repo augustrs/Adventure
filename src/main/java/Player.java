@@ -123,22 +123,42 @@ public class Player {
             return Returnmessage.NOT_OK;
         }
     }
-    public AttackEnum attack(){
-        if(currentWeapon instanceof RangedWeapon){
-            RangedWeapon rangedWeapon = (RangedWeapon) currentWeapon;
-            int currentAmmo = currentWeapon.getAmmo();
-            if(currentAmmo < 1){
+    public AttackEnum attack() {
+        Enemy enemy = currentRoom.getEnemyList().get(0);
+        if (currentWeapon instanceof RangedWeapon) {
 
-                return  AttackEnum.NO_AMMO;
+            int currentAmmo = currentWeapon.getAmmo();
+            if (currentAmmo < 1) {
+
+                return AttackEnum.NO_AMMO;
             } else {
-                ((RangedWeapon) currentWeapon).setAmmo(currentAmmo-1);
+                ((RangedWeapon) currentWeapon).setAmmo(currentAmmo - 1);
+                enemy.setHp(enemy.getHp() - currentWeapon.damage);
+                enemy.isEnemyDead();
+                if (enemy.getHp() > 0) {
+                    System.out.println("The enemy attacks with their weapon '" + enemy.getWeapon() + "'");
+                    System.out.println("The enemy dealt '" + enemy.getWeapon().getDamage() + "' damage");
+                    health = health - enemy.getWeapon().getDamage();
+                    System.out.println("You have '" + health + "' HP remaining");
+                    System.out.println("Your weapon has '" + currentWeapon.getAmmo() + "' ammo left");
+
+                }
                 return AttackEnum.FIRED;
             }
         }
         if (currentWeapon instanceof MeleeWeapon) {
-            MeleeWeapon meleeWeapon = (MeleeWeapon) currentWeapon;
+            enemy.setHp(enemy.getHp() - currentWeapon.damage);
+            enemy.isEnemyDead();
+            if (enemy.getHp() > 0) {
+                System.out.println("The enemy attacks with their weapon '" + enemy.getWeapon() + "'");
+                System.out.println("The enemy dealt '" + enemy.getWeapon().getDamage() + "' damage");
+                health = health - enemy.getWeapon().getDamage();
+                System.out.println("You have '" + health + "'HP remaining");
+            }
             return AttackEnum.ATTACK;
+
+        } else {
+            return AttackEnum.NOT_A_WEAPON;
         }
-        return AttackEnum.NOT_A_WEAPON;
     }
 }
