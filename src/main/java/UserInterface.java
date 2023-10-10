@@ -39,8 +39,14 @@ public class UserInterface {
         System.out.println("Find your way to the pharaohs tomb, and recieve infinite wealth");
         System.out.println("Type 'help' for full list of commands");
 
-        System.out.println("▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔\n" + adventure.getCurrentRoom() + adventure.getCurrentRoom().getRoomContent());
+        System.out.println("▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔\n");
+        System.out.println("On the floor you see: ");
+        adventure.printItemList();
+        System.out.println("\nIn the room you also see: ");
+        adventure.printEnemyList();
         System.out.println("");
+
+
     }
 
 

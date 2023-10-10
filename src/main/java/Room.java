@@ -99,5 +99,15 @@ public class Room {
     public ArrayList<Item> getItemList() {
         return itemList;
     }
+    public void printItemlist() {
+        for (Item item : itemList) {
+            System.out.println(item);
+        }
+    }
+    public void printEnemyList() {
+        for (Enemy enemy : enemyList) {
+            System.out.println(enemy);
+        }
+    }
 }
 

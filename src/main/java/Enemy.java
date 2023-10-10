@@ -39,12 +39,8 @@ public class Enemy {
 
     @Override
     public String toString() {
-        return "Enemy{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", hp=" + hp +
-                ", weapon=" + weapon
-                ;
+        return description + " ("+hp+"hp)"+ "\nIn their hands they are holding: '" + weapon+"'";
+
     }
     public void isEnemyDead() {
         if (hp>0) {
