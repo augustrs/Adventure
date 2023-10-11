@@ -1,5 +1,6 @@
 public class Map {
     private Room starterRoom;
+    private Enemy finalEnemy;
 
     public void createMap() {
         Room room1 = new Room("Entrance of the pyramid", "You find yourself at the entrance of a pyramid ...");
@@ -72,6 +73,8 @@ public class Map {
     public Room getStarterRoom() {
         return starterRoom;
     }
-
+    public void setFinalEnemy(Enemy enemy) {
+        this.finalEnemy = enemy;
+    }
 
 }

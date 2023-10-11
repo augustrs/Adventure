@@ -2,8 +2,11 @@ public class Adventure {
 
     private Map map = new Map();
     private Player player;
-
+    public boolean finalEnemyDefeated;
+    private Enemy finalEnemy;
     public Adventure() {
+        finalEnemy = null;
+        finalEnemyDefeated=false;
         map.createMap();
         player = new Player(map.getStarterRoom());
 
@@ -57,15 +60,47 @@ public class Adventure {
     }
 
     public AttackEnum attack() {
+        checkFinalEnemyDefeat();
         return player.attack();
     }
+
     public void printItemList() {
         getCurrentRoom().printItemlist();
     }
-    public void printEnemyList(){
+
+    public void printEnemyList() {
         getCurrentRoom().printEnemyList();
     }
+
+    public boolean playerisDead() {
+        return player.playerisDead;
+    }
+    public void resetGame() {
+        map.createMap();
+        player.setCurrentRoom(map.getStarterRoom());
+        player.resetPlayerState();
+        System.out.println("The game has been reset, welcome back!");
+        System.out.println("Find your way to the pharaoh's tomb and receive infinite wealth.");
+        System.out.println("Type 'help' for a list of commands.");
+    }
+    public void checkFinalEnemyDefeat() {
+        if (finalEnemy != null && finalEnemy.getHp()<=0) {
+            finalEnemyDefeated=true;
+            System.out.println(" ▄▄   ▄▄ ▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄   ▄▄   ▄▄ \n" +
+                    "█  █ █  █   █       █       █       █   ▄  █ █  █ █  █\n" +
+                    "█  █▄█  █   █       █▄     ▄█   ▄   █  █ █ █ █  █▄█  █\n" +
+                    "█       █   █     ▄▄█ █   █ █  █ █  █   █▄▄█▄█       █\n" +
+                    "█       █   █    █    █   █ █  █▄█  █    ▄▄  █▄     ▄█\n" +
+                    " █     ██   █    █▄▄  █   █ █       █   █  █ █ █   █  \n" +
+                    "  █▄▄▄█ █▄▄▄█▄▄▄▄▄▄▄█ █▄▄▄█ █▄▄▄▄▄▄▄█▄▄▄█  █▄█ █▄▄▄█  \n");
+        }
+    }
+    public void setFinalEnemy() {
+        map.setFinalEnemy(new Enemy("King Pharaoh", "King of the Pyramid", 1, new MeleeWeapon("Staff", "Pharaoh's Staff of Doom", 25)map.equals(Room room5));
+    }
+
 }
+
 
 
 

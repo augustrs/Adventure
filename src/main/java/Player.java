@@ -5,9 +5,9 @@ public class Player {
     private ArrayList<Item> inventory;
     private int health;
     private Weapon currentWeapon;
-
+    public boolean playerisDead = false;
     public Player(Room currentRoom) {
-        this.health = 50;
+        this.health = 70;
         this.inventory = new ArrayList<>();
         this.currentRoom = currentRoom;
     }
@@ -17,7 +17,12 @@ public class Player {
             System.out.println("You cant go this way");
         } else {
             currentRoom = currentRoom.getNorth();
-            System.out.println(getCurrentRoom() + getCurrentRoom().getRoomContent());
+            System.out.println(currentRoom);
+            System.out.println("On the floor you see: ");
+            currentRoom.printItemlist();
+            System.out.println("\nIn the room you also see: ");
+            currentRoom.printEnemyList();
+            System.out.println("");
         }
     }
 
@@ -26,8 +31,12 @@ public class Player {
             System.out.println("You cant go this way");
         } else {
             currentRoom = currentRoom.getSouth();
-            System.out.println(getCurrentRoom() + getCurrentRoom().getRoomContent());
-        }
+            System.out.println(currentRoom);
+            System.out.println("On the floor you see: ");
+            currentRoom.printItemlist();
+            System.out.println("\nIn the room you also see: ");
+            currentRoom.printEnemyList();
+            System.out.println("");        }
     }
 
     public void goEast() {
@@ -35,8 +44,12 @@ public class Player {
             System.out.println("You cant go this way");
         } else {
             currentRoom = currentRoom.getEast();
-            System.out.println(getCurrentRoom() + getCurrentRoom().getRoomContent());
-        }
+            System.out.println(currentRoom);
+            System.out.println("On the floor you see: ");
+            currentRoom.printItemlist();
+            System.out.println("\nIn the room you also see: ");
+            currentRoom.printEnemyList();
+            System.out.println("");        }
     }
 
 
@@ -45,8 +58,12 @@ public class Player {
             System.out.println("You cant go this way");
         } else {
             currentRoom = currentRoom.getWest();
-            System.out.println(getCurrentRoom() + getCurrentRoom().getRoomContent());
-        }
+            System.out.println(currentRoom);
+            System.out.println("On the floor you see: ");
+            currentRoom.printItemlist();
+            System.out.println("\nIn the room you also see: ");
+            currentRoom.printEnemyList();
+            System.out.println("");        }
     }
 
 
@@ -153,6 +170,7 @@ public class Player {
                 System.out.println("The enemy attacks with their weapon '" + enemy.getWeapon() + "'");
                 System.out.println("The enemy dealt '" + enemy.getWeapon().getDamage() + "' damage");
                 health = health - enemy.getWeapon().getDamage();
+                isPlayerDead();
                 System.out.println("You have '" + health + "'HP remaining");
             }
             return AttackEnum.ATTACK;
@@ -160,5 +178,20 @@ public class Player {
         } else {
             return AttackEnum.NOT_A_WEAPON;
         }
+    }
+        public void isPlayerDead() {
+
+            if (health<1) {
+            playerisDead = true;
+
+            }
+
+    }
+
+    public void resetPlayerState() {
+        health = 70;
+        inventory.clear();
+        currentWeapon = null;
+        playerisDead = false;
     }
 }
