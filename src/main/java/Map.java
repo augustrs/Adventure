@@ -22,8 +22,8 @@ public class Map {
         room1.addItem(new Item("watch", "A shiny golden watch"));
         room1.addItem(new Food("apple", "A red apple", 10));
         room1.addItem(new RangedWeapon("bow", "An ancient bow",5, 2));
-        room1.addEnemy(new Enemy("ogre","A nasty smelling ogre",10,new MeleeWeapon("book", "A very boring, but heavy book",5), room1));
-        room1.addItem(new MeleeWeapon("club", "A heavy club",5));
+        room1.addEnemy(new Enemy("mummy","An ancient dusty mummy",10,new MeleeWeapon("book", "A very boring, but heavy book",5), room1));
+        room1.addItem(new MeleeWeapon("club", "A heavy club",7));
 
 
         // room 2
@@ -32,6 +32,10 @@ public class Map {
         room2.setWest(room1);
         room2.setSouth(null);
         room2.addItem(new Item ("torch", "A torch"));
+        room2.addItem(new Item("cup", "A cup made of clay"));
+        room2.addItem(new Food("bread", "Aged bread", 5));
+        room2.addItem(new MeleeWeapon("spear", "A long sharp spear", 10));
+        room2.addEnemy(new Enemy("Sand Golem", "A big sand golem", 20, new MeleeWeapon("Saber", "A sharp saber", 7), room2));
         // room 3
         room3.setNorth(null);
         room3.setEast(null);
@@ -46,6 +50,14 @@ public class Map {
         room4.setEast(null);
         room4.setWest(null);
         room4.setSouth(room7);
+        room4.addItem(new Item ("torch", "A torch"));
+        room4.addItem(new Item("cup", "A cup made of clay"));
+        room4.addItem(new Food("bread", "Aged bread", 5));
+        room4.addItem(new Food("healthpotion", "A healthy looking elixir", 10));
+        room4.addItem(new Food("apple", "A rotten apple", -4));
+        room4.addItem(new Food("healthpotion", "A greater healthy looking elixir", 15));
+        room4.addEnemy(new Enemy("Bone Archer", "A bone archer", 10, new RangedWeapon("Bow", "A longbow", 5, 10), room4));
+        room4.addEnemy(new Enemy("Bone Archer", "A bone archer", 10, new RangedWeapon("Bow", "A longbow", 5, 10), room4));
         // room 5
         room5.setNorth(null);
         room5.setEast(null);
@@ -90,6 +102,13 @@ public class Map {
         room9.setEast(null);
         room9.setWest(room8);
         room9.setSouth(null);
+        room9.addItem(new Item("plate", "An ancient sandstone plate"));
+        room9.addItem(new Item("Tombstone", "An ancient tombstone of the 2nd pharaoh king"));
+        room9.addItem(new Item("Tombstone", "An ancient tombstone of the 1st pharaoh king"));
+        room9.addEnemy(new Enemy("Sandstone Gargoyle", "A giant sandstone gargoyle", 22, new MeleeWeapon("longsword", "a giant but heavy longsword", 14), room9));
+        room9.addEnemy(new Enemy("Sandstone Gargoyle", "A large sandstone gargoyle", 14, new RangedWeapon("crossbow", "A light crossbow", 8, 5), room9));
+        room9.addItem(new Food("healthpotion", "A greater healthy looking elixir", 15));
+        room9.addItem(new Food("mysterypotion", "???", -8));
         this.starterRoom = room1;
     }
 
