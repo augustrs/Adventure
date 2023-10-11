@@ -93,10 +93,8 @@ public class Adventure {
                     "█       █   █    █    █   █ █  █▄█  █    ▄▄  █▄     ▄█\n" +
                     " █     ██   █    █▄▄  █   █ █       █   █  █ █ █   █  \n" +
                     "  █▄▄▄█ █▄▄▄█▄▄▄▄▄▄▄█ █▄▄▄█ █▄▄▄▄▄▄▄█▄▄▄█  █▄█ █▄▄▄█  \n");
+
         }
-    }
-    public void setFinalEnemy() {
-        map.setFinalEnemy(new Enemy("King Pharaoh", "King of the Pyramid", 1, new MeleeWeapon("Staff", "Pharaoh's Staff of Doom", 25)map.equals(Room room5));
     }
 
 }

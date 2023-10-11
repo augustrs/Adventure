@@ -29,7 +29,9 @@ public class UserInterface {
             } else {
                 userinput();
             }
+            adventure.checkFinalEnemyDefeat();
             if (adventure.finalEnemyDefeated) {
+
                 victory();
             }
         }
@@ -47,6 +49,7 @@ public class UserInterface {
             inGameSession = false;
         }
     }
+
 
     public void victory() {
         System.out.println("Congratulations! You have defeated the final boss.");
@@ -151,6 +154,9 @@ public class UserInterface {
                         }
                         case NOT_A_WEAPON -> {
                             System.out.println("\nYou dont have a weapon equipped to attack with");
+                        }
+                        case NO_ENEMY -> {
+                            System.out.println("\nNo enemy to attack");
                         }
                     }
                 }

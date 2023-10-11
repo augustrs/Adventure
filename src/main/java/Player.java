@@ -141,48 +141,53 @@ public class Player {
         }
     }
     public AttackEnum attack() {
-        Enemy enemy = currentRoom.getEnemyList().get(0);
-        if (currentWeapon instanceof RangedWeapon) {
+        if (currentRoom.getEnemyList().isEmpty()) {
+            return AttackEnum.NO_ENEMY;
+        } else {
+            Enemy enemy = currentRoom.getEnemyList().get(0);
+            if (currentWeapon instanceof RangedWeapon) {
 
-            int currentAmmo = currentWeapon.getAmmo();
-            if (currentAmmo < 1) {
+                int currentAmmo = currentWeapon.getAmmo();
+                if (currentAmmo < 1) {
 
-                return AttackEnum.NO_AMMO;
-            } else {
-                ((RangedWeapon) currentWeapon).setAmmo(currentAmmo - 1);
+                    return AttackEnum.NO_AMMO;
+                } else {
+                    ((RangedWeapon) currentWeapon).setAmmo(currentAmmo - 1);
+                    enemy.setHp(enemy.getHp() - currentWeapon.damage);
+                    enemy.isEnemyDead();
+                    if (enemy.getHp() > 0) {
+                        System.out.println("The enemy attacks with their weapon '" + enemy.getWeapon() + "'");
+                        System.out.println("The enemy dealt '" + enemy.getWeapon().getDamage() + "' damage");
+                        health = health - enemy.getWeapon().getDamage();
+                        System.out.println("You have '" + health + "' HP remaining");
+                        System.out.println("Your weapon has '" + currentWeapon.getAmmo() + "' ammo left");
+
+                    }
+                    return AttackEnum.FIRED;
+                }
+            }
+            if (currentWeapon instanceof MeleeWeapon) {
                 enemy.setHp(enemy.getHp() - currentWeapon.damage);
                 enemy.isEnemyDead();
                 if (enemy.getHp() > 0) {
                     System.out.println("The enemy attacks with their weapon '" + enemy.getWeapon() + "'");
                     System.out.println("The enemy dealt '" + enemy.getWeapon().getDamage() + "' damage");
                     health = health - enemy.getWeapon().getDamage();
-                    System.out.println("You have '" + health + "' HP remaining");
-                    System.out.println("Your weapon has '" + currentWeapon.getAmmo() + "' ammo left");
-
+                    isPlayerDead();
+                    System.out.println("You have '" + health + "'HP remaining");
                 }
-                return AttackEnum.FIRED;
-            }
-        }
-        if (currentWeapon instanceof MeleeWeapon) {
-            enemy.setHp(enemy.getHp() - currentWeapon.damage);
-            enemy.isEnemyDead();
-            if (enemy.getHp() > 0) {
-                System.out.println("The enemy attacks with their weapon '" + enemy.getWeapon() + "'");
-                System.out.println("The enemy dealt '" + enemy.getWeapon().getDamage() + "' damage");
-                health = health - enemy.getWeapon().getDamage();
-                isPlayerDead();
-                System.out.println("You have '" + health + "'HP remaining");
-            }
-            return AttackEnum.ATTACK;
+                return AttackEnum.ATTACK;
 
-        } else {
-            return AttackEnum.NOT_A_WEAPON;
+            } else {
+                return AttackEnum.NOT_A_WEAPON;
+            }
         }
+
     }
         public void isPlayerDead() {
 
-            if (health<1) {
-            playerisDead = true;
+            if (health < 1) {
+                playerisDead = true;
 
             }
 
