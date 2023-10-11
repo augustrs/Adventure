@@ -1,7 +1,4 @@
 import java.util.Scanner;
-import javax.sound.sampled.*;
-import java.io.File;
-import java.io.IOException;
 
 public class UserInterface {
     Scanner scanner = new Scanner(System.in);
@@ -42,8 +39,14 @@ public class UserInterface {
         System.out.println("Find your way to the pharaohs tomb, and recieve infinite wealth");
         System.out.println("Type 'help' for full list of commands");
 
-        System.out.println("▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔\n" + adventure.getCurrentRoom() + adventure.getCurrentRoom().getDescription());
+        System.out.println("▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔\n");
+        System.out.println("On the floor you see: ");
+        adventure.printItemList();
+        System.out.println("\nIn the room you also see: ");
+        adventure.printEnemyList();
         System.out.println("");
+
+
     }
 
 
@@ -67,7 +70,7 @@ public class UserInterface {
                             "\nINVENTORY    to look in your inventory");
                 }
                 case "look" -> {
-                    System.out.println(adventure.getCurrentRoom() + adventure.getCurrentRoom().getDescription());
+                    System.out.println(adventure.getCurrentRoom() + adventure.getCurrentRoom().getRoomContent());
                 }
                 case "exit" -> {
                     System.exit(0);
@@ -85,23 +88,23 @@ public class UserInterface {
                     AttackEnum result = adventure.attack();
                     switch (result) {
                         case ATTACK -> {
-                            adventure.attack();
-                            System.out.println("You've attacked an enemy");
-                            //Enemy hp her
+
+                            System.out.println("\nAttack sequence successful");
+
                         }
                         case FIRED -> {
-                            adventure.attack();
-                            System.out.println("You've fired your weapon");
+
+                            System.out.println("\nFiring sequence successful");
                         }
                         case NO_AMMO -> {
-                            System.out.println("NO AMMO! cant attack!");
+                            System.out.println("\nNO AMMO! cant attack!");
                         }
                         case NOT_A_WEAPON -> {
-                            System.out.println("You dont have a weapon equipped to attack with");
+                            System.out.println("\nYou dont have a weapon equipped to attack with");
                         }
                     }
                 }
-                default -> System.out.println("Invalid input, type 'help' for list of commands");
+                default -> System.out.println("\nInvalid input, type 'help' for list of commands");
             }
         }
         if (commands.length == 2)

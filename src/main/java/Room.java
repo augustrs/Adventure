@@ -47,9 +47,9 @@ public class Room {
         return north;
     }
 
-    public String getDescription() {
+    public String getRoomContent() {
 
-        return "In the room you see: " + itemList.toString();
+        return "In the room you see: " + itemList.toString()+ enemyList.toString();
     }
 
 
@@ -71,13 +71,7 @@ public class Room {
         }
         return null;
     }
-    public Enemy printEnemies(){
-        for (Enemy enemy : enemyList) {
-            System.out.println(enemy.getName()+enemy.getDescription()+enemy.getHp());
-        }
 
-        return enemy;
-    }
     public Item removeItem(String kortNavn) {
         Item item = findItem(kortNavn);
         itemList.remove(item);
@@ -90,12 +84,30 @@ public class Room {
         return item;
     }
 
-    public void createEnemy(String name, String description, int hp, Weapon weapon) {
-        Enemy enemy = new Enemy(name, description, hp, weapon);
+    public void createEnemy(String name, String description, int hp, Weapon weapon, Room room) {
+        Enemy enemy = new Enemy(name, description, hp, weapon,room);
         addEnemy(enemy);
     }
     public void addEnemy (Enemy enemy) {
         enemyList.add(enemy);
+    }
+
+    public ArrayList<Enemy> getEnemyList() {
+        return enemyList;
+    }
+
+    public ArrayList<Item> getItemList() {
+        return itemList;
+    }
+    public void printItemlist() {
+        for (Item item : itemList) {
+            System.out.println(item);
+        }
+    }
+    public void printEnemyList() {
+        for (Enemy enemy : enemyList) {
+            System.out.println(enemy);
+        }
     }
 }
 

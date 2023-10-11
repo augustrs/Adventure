@@ -59,6 +59,12 @@ public class Adventure {
     public AttackEnum attack() {
         return player.attack();
     }
+    public void printItemList() {
+        getCurrentRoom().printItemlist();
+    }
+    public void printEnemyList(){
+        getCurrentRoom().printEnemyList();
+    }
 }
 
 
