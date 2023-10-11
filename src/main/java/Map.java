@@ -3,14 +3,14 @@ public class Map {
     private Enemy finalEnemy;
 
     public void createMap() {
-        Room room1 = new Room("Entrance of the pyramid", "You find yourself at the entrance of a pyramid ...");
-        Room room2 = new Room("Hallway", "You find yourself at a long hallway ...");
-        Room room3 = new Room("Traproom", "You find yourself in a room full of armed traps ...");
-        Room room4 = new Room("Food room", "You are in a room full of vessels ...");
-        Room room5 = new Room("Pharaohs room", "Ahead of you is the tomb of ...");
-        Room room6 = new Room("War room", "Room full of weapons ...");
-        Room room7 = new Room("Water room", "Ahead of you is a pool of water ...");
-        Room room8 = new Room("Loot room", "Gold and prices ...");
+        Room room1 = new Room("Entrance of the pyramid", "You find yourself at the entrance of a pyramid");
+        Room room2 = new Room("Hallway", "You find yourself at a long hallway");
+        Room room3 = new Room("Traproom", "You find yourself in a room full of armed traps");
+        Room room4 = new Room("Food room", "You are in a room full of vessels");
+        Room room5 = new Room("Pharaohs room", "Ahead of you is the tomb of");
+        Room room6 = new Room("War room", "Room full of weapons");
+        Room room7 = new Room("Water room", "Ahead of you is a pool of water");
+        Room room8 = new Room("Loot room", "Gold and prices");
         Room room9 = new Room("Grave room", "You have arrived to a room full of deadly mummies");
 
         // room 1
@@ -37,6 +37,10 @@ public class Map {
         room3.setEast(null);
         room3.setWest(room2);
         room3.setSouth(room6);
+        room3.addItem(new Item("statue", "A Statue of a Pharaoh"));
+        room3.addItem(new Food("healthpotion", "A greater healthy looking elixir", 15));
+        room3.addItem(new RangedWeapon("slingshot", "An old slingshot", 4, 10));
+        room3.addEnemy(new Enemy("anubis sentinel", "A large anubis sentinel", 30, new MeleeWeapon("Spear", "A giant spear", 9), room3));
         // room 4
         room4.setNorth(room1);
         room4.setEast(null);
@@ -47,21 +51,40 @@ public class Map {
         room5.setEast(null);
         room5.setWest(null);
         room5.setSouth(room8);
+        room5.addItem(new Item ("torch", "A torch"));
+        room5.addItem(new Item ("torch", "A torch"));
+        room5.addItem(new Item ("tablet", "Pharaoh's Tablet"));
+        room4.addItem(new Food("healthpotion", "A lesser healthy looking elixir", 8));
+        room4.addItem(new Food("???", "???", -6));
+        room5.addEnemy(new Enemy("King Pharaoh", "King of the Pyramid", 1, new MeleeWeapon("Staff", "Pharaoh's Staff of Doom", 25), room5));
+        setFinalEnemy(room5.getEnemyList().get(0));
+
         // room 6
         room6.setNorth(room3);
         room6.setEast(null);
         room6.setWest(null);
         room6.setSouth(room9);
+        room6.addItem(new Item("Artifact", "A mysterious ancient artifact"));
+        room6.addItem(new Food("Snack", "a little snack", 5));
+        room6.addEnemy (new Enemy ("Sand monster", "A frightening monster made out of sand", 20, new MeleeWeapon("Sword", "A sword made out of sand", 7), room6));
+
         // room 7
         room7.setNorth(room4);
         room7.setEast(room8);
         room7.setWest(null);
         room7.setSouth(null);
+        room7.addItem(new Item("tablet", "an ancient tablet inscribed with hieroglyphs"));
+        room7.addEnemy(new Enemy("Elemental", "a water elemental", 20, new MeleeWeapon("Lance", "A Lance made out of water", 9), room7));
+        room7.addItem(new Food("Potion", "a minor healthpotion", 10));
         // room 8
         room8.setNorth(room5);
         room8.setEast(room9);
         room8.setWest(room7);
         room8.setSouth(null);
+        room8.addItem(new Item("Statue", "a golden statue"));
+        room8.addItem(new Item("purse", "a purse full of gold and coins"));
+        room8.addItem(new Item("chest", "a treasure chest full of value"));
+        room8.addEnemy(new Enemy("Snake", "a large snake", 20, new MeleeWeapon("Club", "a venomous club", 9), room7));
         // room 9
         room9.setNorth(room6);
         room9.setEast(null);
