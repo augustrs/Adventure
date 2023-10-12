@@ -50,6 +50,7 @@ public class Enemy {
     public void isEnemyDead() {
         if (getRoomNumber() == 5) {
             if (hp <= 0) {
+                System.out.println(name + ", " + description + " has died");
                 System.out.println("Congratulations, you have completed the game!");
 
             }

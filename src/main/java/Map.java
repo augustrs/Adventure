@@ -66,9 +66,9 @@ public class Map {
         room5.addItem(new Item ("torch", "A torch"));
         room5.addItem(new Item ("torch", "A torch"));
         room5.addItem(new Item ("tablet", "Pharaoh's Tablet"));
-        room4.addItem(new Food("healthpotion", "A lesser healthy looking elixir", 8));
-        room4.addItem(new Food("???", "???", -6));
-        room5.addEnemy(new Enemy("King Pharaoh", "King of the Pyramid", 1, new MeleeWeapon("Staff", "Pharaoh's Staff of Doom", 25), room5,5));
+        room5.addItem(new Food("healthpotion", "A lesser healthy looking elixir", 8));
+        room5.addItem(new Food("???", "???", -6));
+        room5.addEnemy(new Enemy("King Pharaoh", "King of the Pyramid", 60, new MeleeWeapon("Staff", "Pharaoh's Staff of Doom", 25), room5,5));
         setFinalEnemy(room5.getEnemyList().get(0));
 
         // room 6
