@@ -2,7 +2,7 @@ public class Adventure {
 
     private Map map = new Map();
     private Player player;
-    private boolean bossDead = false;
+
 
     public Adventure() {
 
@@ -131,9 +131,6 @@ public class Adventure {
 
     }
 
-    public void setBossDead(boolean bossDead) {
-        this.bossDead = bossDead;
-    }
 }
 
 

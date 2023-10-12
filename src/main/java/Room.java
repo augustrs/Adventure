@@ -46,14 +46,6 @@ public class Room {
     public Room getNorth() {
         return north;
     }
-
-    public String getRoomContent() {
-
-        return "In the room you see: " + itemList.toString()+ enemyList.toString();
-    }
-
-
-
     @Override
     public String toString() {
         return "\n" + name + " - " + description;
@@ -76,17 +68,6 @@ public class Room {
         Item item = findItem(kortNavn);
         itemList.remove(item);
         return item;
-    }
-
-    public Item placeItem(String kortNavn) {
-        Item item = findItem(kortNavn);
-        itemList.add(item);
-        return item;
-    }
-
-    public void createEnemy(String name, String description, int hp, Weapon weapon, Room room, int roomNumber) {
-        Enemy enemy = new Enemy(name, description, hp, weapon,room,roomNumber);
-        addEnemy(enemy);
     }
     public void addEnemy (Enemy enemy) {
         enemyList.add(enemy);

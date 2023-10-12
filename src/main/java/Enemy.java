@@ -51,8 +51,7 @@ public class Enemy {
         if (getRoomNumber() == 5) {
             if (hp <= 0) {
                 System.out.println("Congratulations, you have completed the game!");
-                // Remove the line below as you're setting bossDead within the attack method
-                // adventure.setBossDead(true);
+
             }
         } else {
             if (hp > 0) {
@@ -62,7 +61,7 @@ public class Enemy {
 
                 currentRoom().getItemList().add(weapon);
                 weapon = null;
-                currentRoom().getEnemyList().remove(this); // Remove the current enemy
+                currentRoom().getEnemyList().remove(this);
             }
         }
     }
