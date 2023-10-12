@@ -26,17 +26,26 @@ public class UserInterface {
             }
             if (adventure.playerisDead()) {
                 gameOver();
-            } else {
-                userinput();
             }
-            adventure.checkFinalEnemyDefeat();
-            if (adventure.finalEnemyDefeated) {
-
+            if (adventure.checkFinalEnemyDefeat()) {
                 victory();
+            }
+            else {
+                userinput();
+
+
             }
         }
     }
+public void checkGameOver() {
+        if (adventure.playerisDead()) {
+            gameOver();
+        } if (adventure.checkFinalEnemyDefeat()){
+            victory();
+        }
 
+
+}
     public void gameOver() {
         System.out.println("\uD835\uDC18\uD835\uDC0E\uD835\uDC14 \uD835\uDC07\uD835\uDC00\uD835\uDC15\uD835\uDC04 \uD835\uDC03\uD835\uDC08\uD835\uDC04\uD835\uDC03!");
         System.out.println(skullASCII);
@@ -52,6 +61,7 @@ public class UserInterface {
 
 
     public void victory() {
+
         System.out.println("Congratulations! You have defeated the final boss.");
         System.out.println("Do you want to play again? (yes/no)");
         String playAgain = scanner.nextLine().trim().toLowerCase();
@@ -93,6 +103,7 @@ public class UserInterface {
 
 
     public void userinput() {
+        checkGameOver();
         String input = scanner.nextLine().trim().toLowerCase();
         String[] commands = input.split("\\s+");
         String command = commands[0];

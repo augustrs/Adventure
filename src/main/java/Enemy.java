@@ -4,14 +4,19 @@ public class Enemy {
     private int hp;
     private Weapon weapon;
     private Room room;
+    private int roomNumber;
 
-    public Enemy(String name, String description, int hp, Weapon weapon, Room room){
+    public Enemy(String name, String description, int hp, Weapon weapon, Room room, int roomNumber){
         this.name = name;
         this.description = description;
         this.hp = hp;
         this.weapon = weapon;
         this.room = room;
 
+    }
+
+    public int getRoomNumber() {
+        return roomNumber;
     }
 
     public String getName() {
@@ -43,14 +48,22 @@ public class Enemy {
 
     }
     public void isEnemyDead() {
-        if (hp>0) {
-            System.out.println(description + " has '" +hp +"' HP remaining");
-        }else {
-            System.out.println(description + " has died and dropped their weapon: '" + weapon + "' in the room");
+        if (getRoomNumber() == 5) {
+            if (hp <= 0) {
+                System.out.println("Congratulations, you have completed the game!");
+                // Remove the line below as you're setting bossDead within the attack method
+                // adventure.setBossDead(true);
+            }
+        } else {
+            if (hp > 0) {
+                System.out.println(description + " has '" + hp + "' HP remaining");
+            } else {
+                System.out.println(description + " has died and dropped their weapon: '" + weapon + "' in the room");
 
-            currentRoom().getItemList().add(weapon);
-            weapon = null;
-            currentRoom().getEnemyList().remove(0);
+                currentRoom().getItemList().add(weapon);
+                weapon = null;
+                currentRoom().getEnemyList().remove(this); // Remove the current enemy
+            }
         }
     }
 

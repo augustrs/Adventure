@@ -2,11 +2,10 @@ public class Adventure {
 
     private Map map = new Map();
     private Player player;
-    public boolean finalEnemyDefeated;
-    private Enemy finalEnemy;
+    private boolean bossDead = false;
+
     public Adventure() {
-        finalEnemy = null;
-        finalEnemyDefeated=false;
+
         map.createMap();
         player = new Player(map.getStarterRoom());
 
@@ -60,9 +59,46 @@ public class Adventure {
     }
 
     public AttackEnum attack() {
-        checkFinalEnemyDefeat();
-        return player.attack();
+        if (player.getCurrentRoom().getEnemyList().isEmpty()) {
+            return AttackEnum.NO_ENEMY;
+        } else {
+            Enemy enemy = player.getCurrentRoom().getEnemyList().get(0);
+
+
+            if (player.getCurrentWeapon() instanceof RangedWeapon) {
+                int currentAmmo = player.getCurrentWeapon().getAmmo();
+                if (currentAmmo < 1) {
+                    return AttackEnum.NO_AMMO;
+                } else {
+                    ((RangedWeapon) player.getCurrentWeapon()).setAmmo(currentAmmo - 1);
+                    enemy.setHp(enemy.getHp() - player.getCurrentWeapon().getDamage());
+                    enemy.isEnemyDead();
+                    if (enemy.getHp() > 0) {
+                        System.out.println("The enemy attacks with their weapon '" + enemy.getWeapon() + "'");
+                        System.out.println("The enemy dealt '" + enemy.getWeapon().getDamage() + "' damage");
+                        player.setHealth(player.getHealth() - enemy.getWeapon().getDamage());
+                        System.out.println("You have '" + player.getHealth() + "' HP remaining");
+                    }
+                    return AttackEnum.FIRED;
+                }
+            }
+            if (player.getCurrentWeapon() instanceof MeleeWeapon) {
+                enemy.setHp(enemy.getHp() - player.getCurrentWeapon().getDamage());
+                enemy.isEnemyDead();
+                if (enemy.getHp() > 0) {
+                    System.out.println("The enemy attacks with their weapon '" + enemy.getWeapon() + "'");
+                    System.out.println("The enemy dealt '" + enemy.getWeapon().getDamage() + "' damage");
+                    player.setHealth(player.getHealth() - enemy.getWeapon().getDamage());
+                    player.isPlayerDead();
+                    System.out.println("You have '" + player.getHealth() + "' HP remaining");
+                }
+                return AttackEnum.ATTACK;
+            } else {
+                return AttackEnum.NOT_A_WEAPON;
+            }
+        }
     }
+
 
     public void printItemList() {
         getCurrentRoom().printItemlist();
@@ -75,6 +111,7 @@ public class Adventure {
     public boolean playerisDead() {
         return player.playerisDead;
     }
+
     public void resetGame() {
         map.createMap();
         player.setCurrentRoom(map.getStarterRoom());
@@ -83,20 +120,20 @@ public class Adventure {
         System.out.println("Find your way to the pharaoh's tomb and receive infinite wealth.");
         System.out.println("Type 'help' for a list of commands.");
     }
-    public void checkFinalEnemyDefeat() {
-        if (finalEnemy != null && finalEnemy.getHp()<=0) {
-            finalEnemyDefeated=true;
-            System.out.println(" ▄▄   ▄▄ ▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄   ▄▄   ▄▄ \n" +
-                    "█  █ █  █   █       █       █       █   ▄  █ █  █ █  █\n" +
-                    "█  █▄█  █   █       █▄     ▄█   ▄   █  █ █ █ █  █▄█  █\n" +
-                    "█       █   █     ▄▄█ █   █ █  █ █  █   █▄▄█▄█       █\n" +
-                    "█       █   █    █    █   █ █  █▄█  █    ▄▄  █▄     ▄█\n" +
-                    " █     ██   █    █▄▄  █   █ █       █   █  █ █ █   █  \n" +
-                    "  █▄▄▄█ █▄▄▄█▄▄▄▄▄▄▄█ █▄▄▄█ █▄▄▄▄▄▄▄█▄▄▄█  █▄█ █▄▄▄█  \n");
 
+    public boolean checkFinalEnemyDefeat() {
+        if (map.getFinalEnemy().getHp() < 0) {
+            return true;
+        } else {
+            return false;
         }
+
+
     }
 
+    public void setBossDead(boolean bossDead) {
+        this.bossDead = bossDead;
+    }
 }
 
 

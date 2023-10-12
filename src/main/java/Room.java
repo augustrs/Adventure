@@ -84,8 +84,8 @@ public class Room {
         return item;
     }
 
-    public void createEnemy(String name, String description, int hp, Weapon weapon, Room room) {
-        Enemy enemy = new Enemy(name, description, hp, weapon,room);
+    public void createEnemy(String name, String description, int hp, Weapon weapon, Room room, int roomNumber) {
+        Enemy enemy = new Enemy(name, description, hp, weapon,room,roomNumber);
         addEnemy(enemy);
     }
     public void addEnemy (Enemy enemy) {
