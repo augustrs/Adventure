@@ -51,9 +51,11 @@ public class Enemy {
     public void isEnemyDead() {
         if (getRoomNumber() == 5) {
             if (hp <= 0) {
-                System.out.println(name + ", " + description + " has died");
+                System.out.println(name + ", " + description + " has died by a lethal strike.");
                 System.out.println("Congratulations, you have completed the game!");
                 System.exit(0);
+            }else if (hp > 0){
+                System.out.println(name + ", " + description + " has '" + hp + "' HP remaining");
             }
         } else {
             if (hp > 0) {

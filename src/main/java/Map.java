@@ -68,7 +68,8 @@ public class Map {
         room5.addItem(new Item ("tablet", "Pharaoh's Tablet"));
         room5.addItem(new Food("healthpotion", "A lesser healthy looking elixir", 8));
         room5.addItem(new Food("???", "???", -6));
-        room5.addEnemy(new Enemy("King Pharaoh", "King of the Pyramid", 50, new MeleeWeapon("Staff", "Pharaoh's Staff of Doom", 25), room5,5));
+        room5.addItem(new MeleeWeapon("spear", "A long sharp spear", 10));
+        room5.addEnemy(new Enemy("King Pharaoh", "King of the Pyramid", 20, new MeleeWeapon("Staff", "Pharaoh's Staff of Doom", 25), room5,5));
         setFinalEnemy(room5.getEnemyList().get(0));
 
         // room 6
@@ -109,7 +110,7 @@ public class Map {
         room9.addEnemy(new Enemy("Sandstone Gargoyle", "A large sandstone gargoyle", 14, new RangedWeapon("crossbow", "A light crossbow", 8, 5), room9,9));
         room9.addItem(new Food("healthpotion", "A greater healthy looking elixir", 15));
         room9.addItem(new Food("mysterypotion", "???", -8));
-        this.starterRoom = room1;
+        this.starterRoom = room5;
     }
 
     public Room getStarterRoom() {
