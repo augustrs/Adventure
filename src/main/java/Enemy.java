@@ -12,6 +12,7 @@ public class Enemy {
         this.hp = hp;
         this.weapon = weapon;
         this.room = room;
+        this.roomNumber = roomNumber;
 
     }
 
@@ -52,7 +53,7 @@ public class Enemy {
             if (hp <= 0) {
                 System.out.println(name + ", " + description + " has died");
                 System.out.println("Congratulations, you have completed the game!");
-
+                System.exit(0);
             }
         } else {
             if (hp > 0) {
